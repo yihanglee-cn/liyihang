@@ -1,0 +1,17 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          业务关键字.txt
+
+*** Test Cases ***
+MPR前台
+    MPR前台登录    https://172.16.5.25:18404/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234    安化出版社
+    [Teardown]
+
+MPR后台
+    登录    https://172.16.5.25:18403/mpr/mcrs-system/mvc/syslogin/login    xuxuerlai    123456    1234
+
+ISLI前台
+    登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
+
+ISLI后台
+    登录    https://172.16.5.25:18405/mpr/mcrs-system/mvc/syslogin/login    admin1    islimpr123    1234

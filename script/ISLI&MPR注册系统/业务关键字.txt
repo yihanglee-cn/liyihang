@@ -1,0 +1,87 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Screenshot
+
+*** Keywords ***
+登录
+    [Arguments]    ${url}    ${username}    ${password}    ${code}
+    [Timeout]
+    Open Browser    ${url}    gc
+    maximize browser window
+    Input Text    id=userName    ${username}
+    Input Text    id=passWord    ${password}
+    Input Text    id=codeCon    ${code}
+    click element    xpath=/html/body/div[2]/div/div/div[1]/div[2]
+    [Teardown]
+
+登录检查
+    ${user}    get text    xpath=//*[@id="content"]/div[1]/div[2]/div/a[1]
+    should contain    ${user}    ${usercheck}
+
+MPR前台登录
+    [Arguments]    ${url}    ${username}    ${password}    ${code}    ${user}
+    [Timeout]
+    Open Browser    ${url}    gc
+    maximize browser window
+    Input Text    id=userName    ${username}
+    Input Text    id=passWord    ${password}
+    Input Text    id=codeCon    ${code}
+    click element    xpath=/html/body/div[2]/div/div/div[1]/div[2]
+    sleep    1
+    Wait Until Element Contains    xpath=//*[@id="content"]/div[1]/div[2]/div/a[1]    ${user}
+    [Teardown]
+
+MPR图书前置码申请
+    [Arguments]    ${ISBN1}    ${ISBN2}    ${ISBN3}    ${ISBN4}    ${ISBN5}    ${booknamecn}
+    ...    ${producttype}    ${editor}    ${clc1}    ${clc2}    ${language}    ${publishcontry}
+    ...    ${author}    ${pages}    ${words}
+    click element    xpath=//*[@id="content"]/div[2]/div[1]/table[2]/tbody/tr/td[1]/a/img
+    wait until page contains element    id=addBookButton
+    click element    id=addBookButton
+    sleep    1
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/input[1]    ${ISBN1}
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/input[2]    ${ISBN2}
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/input[3]    ${ISBN3}
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/input[4]    ${ISBN4}
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/input[5]    ${ISBN5}
+    input text    xpath=//*[@id="dataForm"]/ul/li[6]/div/input    ${booknamecn}
+    select From List    xpath=//*[@id="dataForm"]/ul/li[10]/div[1]/select    ${producttype}
+    input text    name=editing    ${editor}
+    select from list    xpath=//*[@id="clc"]/select[1]    ${clc1}
+    select from list    xpath=//*[@id="clc"]/select[2]    ${clc2}
+    select from list    xpath=//*[@id="dataForm"]/ul/li[12]/div[1]/select    ${language}
+    select from list    xpath=//*[@id="dataForm"]/ul/li[14]/div[1]/select    ${publishcontry}
+    input text    xpath=//*[@id="dataForm"]/ul/li[15]/div[1]/input    ${author}
+    input text    xpath=//*[@id="dataForm"]/ul/li[19]/div[1]/input    ${pages}
+    input text    xpath=//*[@id="dataForm"]/ul/li[20]/div[1]/input    ${words}
+    click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[1]
+    sleep    1
+    click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[3]
+    sleep    1
+    click element    xpath=/html/body/div[4]/div[3]
+
+MPR期刊前置码申请
+    [Arguments]    ${periodname}    ${CN1}    ${CN2}    ${CN3}    ${species}    ${contry}
+    ...    ${counts}    ${year}    ${num}    ${realesedate}    ${pagenum}
+    click element    xpath=//*[@id="content"]/div[2]/div[1]/table[2]/tbody/tr/td[1]/a/img
+    wait until page contains element    id=addBookButton
+    click element    xpath=//*[@id="6"]
+    sleep    1
+    click element    xpath=//*[@id="addBookButton"]
+    sleep    1
+    input text    xpath=//*[@id="dataForm"]/ul/li[4]/div/input    ${periodname}
+    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[1]    ${CN1}
+    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[2]    ${CN2}
+    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[3]    ${CN3}
+    select from list    xpath=//*[@id="dataForm"]/ul/li[7]/div/select    ${species}
+    select from list    xpath=//*[@id="dataForm"]/ul/li[9]/div/select    ${contry}
+    select from list    xpath=//*[@id="dataForm"]/ul/li[11]/select    ${counts}
+    input text    xpath=//*[@id="dataForm"]/ul/li[12]/input[1]    ${year}
+    input text    xpath=//*[@id="dataForm"]/ul/li[12]/input[2]    ${num}
+    input text     xpath=//*[@id="releaseDate"]    ${realesedate}
+    input text    xpath=//*[@id="dataForm"]/ul/li[15]/div/input    ${pagenum}
+    click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[1]
+    sleep    1
+    click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[3]
+    sleep    1
+    click element    xpath=/html/body/div[5]/div[3]
