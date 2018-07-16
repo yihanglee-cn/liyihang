@@ -4,3 +4,31 @@ Resource          业务关键字.txt
 *** Test Cases ***
 ISLI音频标志码申请
     登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
+    sleep    1
+    click element    xpath=//*[@id="content"]/div[2]/div/div[4]    #点击音频服务
+    wait until page contains element    xpath=//*[@id="addBookButton"]
+    click element    xpath=//*[@id="addBookButton"]    #点击申请音频ISLI标志码按钮
+    wait until page contains element    xpath=/html/body/div[2]/div/div[2]/h4    #等待申请页面加载完成
+    input text    name=voiceName    你好
+    input text    name=voiceNameEn    hello
+    input text    id=isrc_1    CN
+    input text    id=isrc_2    A12
+    input text    id=isrc_3    18
+    input text    id=isrc_4    12345
+    input text    name=producer    Alex
+    input text    name=publisher    Alex
+    input text    name=songwriter    Alex
+    input text    name=composer    Alex
+    input text    name=performer    Alex
+    input text    name=recordingObligee    Alex
+    select from list    name=publishCountry    中国
+    select from list by label    name=typeId    录音制品    #重点！！！如果下拉框有子选项选不到的，就用这个。
+    input text    name=description    这里是描述！！
+    select from list     name=langId    汉语
+    select from list     name=storageFormat    MP3
+    input text    name=voiceFileSize    10
+    input text    xpath=//*[@id="dataForm"]/ul/li[17]/input[1]    1
+    input text    xpath=//*[@id="dataForm"]/ul/li[17]/input[2]    2
+    input text    name=releaseDate    2018-07-16
+    input text    name=remark    备注信息
+    input text    name=isliCodenum    100
