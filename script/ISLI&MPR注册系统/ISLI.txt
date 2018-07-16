@@ -1,0 +1,6 @@
+*** Settings ***
+Resource          业务关键字.txt
+
+*** Test Cases ***
+ISLI音频标志码申请
+    登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
