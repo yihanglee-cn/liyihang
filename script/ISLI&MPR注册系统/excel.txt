@@ -1,0 +1,9 @@
+*** Settings ***
+Library           ExcelLibrary
+Library           Selenium2Library
+
+*** Test Cases ***
+excel01
+    open excel    D:\\liyihang\\script\\TestExcel\\excel01.xls    #只支持xls表格，路径要用双斜杠
+    ${no1}    read cell data by name    Sheet1    A1    #Sheet首字母要大写
+    log    ${no1}

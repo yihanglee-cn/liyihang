@@ -32,6 +32,11 @@ ISLI音频标志码申请
     input text    name=releaseDate    2018-07-16
     input text    name=remark    备注信息
     input text    name=isliCodenum    100
+    click element    id=preview    #点击提交
+    sleep    1
+    click element    xpath=//*[@id="submits"]    #确认提交
+    sleep    1
+    click element    xpath=/html/body/div[4]/div[3]    #返回列表
 
 ISLI图书标志码申请
     登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
@@ -55,8 +60,8 @@ ISLI图书标志码申请
     input text    name=setsName    LOL    #套书名
     select from list by label    name=productType    图书    #产品形式
     input text    name=editing    李一杭    #责任编辑
-    select from list     name=tempclcId    马克思主义、列宁...    #中图分类法1
-    select from list     name=clcId    马克思、恩格斯著...    #中图分类法2
+    select from list    name=tempclcId    马克思主义、列宁...    #中图分类法1
+    select from list    name=clcId    马克思、恩格斯著...    #中图分类法2
     input text    name=publishingDate    2018-07-17    #出版日期
     select from list by label    name=langId    汉语    #语种
     select from list by label    name=publishCountry    中国    #出版地
