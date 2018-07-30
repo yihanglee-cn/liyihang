@@ -78,10 +78,47 @@ MPR期刊前置码申请
     select from list    xpath=//*[@id="dataForm"]/ul/li[11]/select    ${counts}
     input text    xpath=//*[@id="dataForm"]/ul/li[12]/input[1]    ${year}
     input text    xpath=//*[@id="dataForm"]/ul/li[12]/input[2]    ${num}
-    input text     xpath=//*[@id="releaseDate"]    ${realesedate}
+    input text    xpath=//*[@id="releaseDate"]    ${realesedate}
     input text    xpath=//*[@id="dataForm"]/ul/li[15]/div/input    ${pagenum}
     click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[1]
     sleep    1
     click element    xpath=/html/body/div[2]/div/div[2]/div[3]/input[3]
     sleep    1
     click element    xpath=/html/body/div[5]/div[3]
+
+ISLI图书申请
+    [Arguments]    ${ISBN1}    ${ISBN2}    ${ISBN3}    ${ISBN4}    ${ISBN5}    ${bookname}
+    ...    ${cname}    ${tname}    ${type}    ${editor}    ${clcid}    ${language}
+    ...    ${country}    ${author}    ${pages}    ${words}
+    登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
+    wait until page contains element    xpath=//*[@id="content"]/div[2]/div/div[1]    #等待图书入口加载完成
+    click element    xpath=//*[@id="content"]/div[2]/div/div[1]    #点击进入图书服务
+    wait until page contains element    id=addBookButton    #等待申请图书ISLI码按钮加载完成
+    click element    id=addBookButton    #点击申请图书ISLI码按钮
+    wait until page contains element    xpath=/html/body/div[2]/div/div[3]/h4    #等待申请页面加载完成
+    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[1]    ${ISBN1}
+    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[2]    ${ISBN2}
+    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[3]    ${ISBN3}
+    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[4]    ${ISBN4}
+    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[5]    ${ISBN5}
+    input text    name=bookNameCn    ${bookname}    #书名
+    input text    name=seriesName    ${cname}    #丛书名
+    input text    name=setsName    ${tname}    #套书名
+    select from list by label    name=productType    ${type}    #产品形式
+    input text    name=editing    ${editor}    #责任编辑
+    select from list    //*[@id="s2id_autogen1"]/a/span[1]    ${clcid}    #中图分类法
+    select from list by label    name=langId    ${language}    #语种
+    select from list by label    name=publishCountry    ${country}    #出版地
+    input text    name=author    ${author}    #著作者
+    input text    name=pages    ${pages}    #页数
+    input text    name=wordage    ${words}    #字数
+    click element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[1]    #点击提交
+    wait until page contains element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[3]    #等待确认提交按钮出现
+    click element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[3]    #点击确认提交
+    sleep    1    #等待返回列表按钮出现
+    click element    xpath=/html/body/div[5]/div[3]    #点击返回列表按钮
+    wait until page contains element    xpath=//*[@id="dataView"]/table/thead/tr/th[4]/a    #等待列表加载完成
+    ${result}    get text    xpath=//*[@id="dataView"]/table/tbody/tr[1]/td[4]
+    should contain    ${result}    卢锡安
+    take screenshot
+    sleep    2

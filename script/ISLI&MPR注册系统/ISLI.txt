@@ -39,43 +39,7 @@ ISLI音频标志码申请
     click element    xpath=/html/body/div[4]/div[3]    #返回列表
 
 ISLI图书标志码申请
-    登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234
-    wait until page contains element    xpath=//*[@id="content"]/div[2]/div/div[1]    #等待图书入口加载完成
-    click element    xpath=//*[@id="content"]/div[2]/div/div[1]    #点击进入图书服务
-    wait until page contains element    id=addBookButton    #等待申请图书ISLI码按钮加载完成
-    click element    id=addBookButton    #点击申请图书ISLI码按钮
-    wait until page contains element    xpath=/html/body/div[2]/div/div[3]/h4    #等待申请页面加载完成
-    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[1]    ${ISBN1}
-    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[2]    ${ISBN2}
-    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[3]    ${ISBN3}
-    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[4]    ${ISBN4}
-    input text    xpath=//*[@id="dataForm"]/ul/li[5]/input[5]    ${ISBN5}
-    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[1]    978    #原ISBN1
-    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[2]    1    #原ISBN2
-    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[3]    6666    #原ISBN3
-    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[4]    1234    #原ISBN4
-    input text    xpath=//*[@id="dataForm"]/ul/li[6]/input[5]    9    #原ISBN5
-    input text    name=bookNameCn    卢锡安    #书名
-    input text    name=seriesName    卢锡安的报复    #丛书名
-    input text    name=setsName    LOL    #套书名
-    select from list by label    name=productType    图书    #产品形式
-    input text    name=editing    李一杭    #责任编辑
-    select from list    name=tempclcId    马克思主义、列宁...    #中图分类法1
-    select from list    name=clcId    马克思、恩格斯著...    #中图分类法2
-    input text    name=publishingDate    2018-07-17    #出版日期
-    select from list by label    name=langId    汉语    #语种
-    select from list by label    name=publishCountry    中国    #出版地
-    input text    name=author    李一杭    #著作者
-    input text    name=pages    100    #页数
-    input text    name=wordage    1000    #字数
-    click element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[1]    #点击提交
-    wait until page contains element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[3]    #等待确认提交按钮出现
-    click element    xpath=/html/body/div[2]/div/div[3]/div[3]/input[3]    #点击确认提交
-    sleep    1    #等待返回列表按钮出现
-    click element    xpath=/html/body/div[5]/div[3]    #点击返回列表按钮
-    wait until page contains element    xpath=//*[@id="dataView"]/table/thead/tr/th[4]/a    #等待列表加载完成
-    ${result}    get text    xpath=//*[@id="dataView"]/table/tbody/tr[1]/td[4]
-    should contain    ${result}    卢锡安
-    take screenshot
-    sleep    2
+    ISLI图书申请    978    1    6666    1234    9    iPhone X
+    ...    iPhone X    iPhone X    图书    李一杭    A14 诗词    汉语
+    ...    中国    李一杭    10    1000
     [Teardown]
