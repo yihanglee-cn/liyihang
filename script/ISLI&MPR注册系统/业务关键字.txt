@@ -6,12 +6,12 @@ Library           Screenshot
 登录
     [Arguments]    ${url}    ${username}    ${password}    ${code}
     [Timeout]
-    Open Browser    ${url}    gc
-    maximize browser window
-    Input Text    id=userName    ${username}
-    Input Text    id=passWord    ${password}
-    Input Text    id=codeCon    ${code}
-    click element    xpath=/html/body/div[2]/div/div/div[1]/div[2]
+    Open Browser    ${url}    gc    #打开浏览器
+    maximize browser window    #最大化浏览器
+    Input Text    id=userName    ${username}    #输入用户名
+    Input Text    id=passWord    ${password}    #输入密码
+    Input Text    id=codeCon    ${code}    #输入验证码
+    click element    xpath=/html/body/div[2]/div/div/div[1]/div[2]    #点击登录
     [Teardown]
 
 登录检查
