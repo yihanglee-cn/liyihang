@@ -8,14 +8,20 @@ Resource          业务关键字.txt
     登录    https://172.16.5.25:18403/mpr/mcrs-system/mvc/syslogin/login    xuxuerlai    123456    1234    #后台
     [Teardown]
 
-测试ISLI
+测试ISLI前台
     登录    https://172.16.5.25:18400/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234    #前台
+
+测试ISLI后台
     登录    https://172.16.5.25:18405/mpr/mcrs-system/mvc/syslogin/login    liyihang    lin123456    1234    #后台
 
-高仿ISLI
+高仿ISLI前台
     登录    https://islip.mpr.net.cn:8443/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234    #前台
+
+高仿ISLI后台
     登录    https://islim.mpr.net.cn:18405/mpr/mcrs-system/mvc/syslogin/index    admin2    islimpr123    1234    #后台
 
-高仿MPR
+高仿MPR前台
     登录    https://mcrcp.mpr.net.cn:8443/mpr/portal-mcrs-publisher/mvc/publisher/toLogin    liyh@mpreader.com    lin123456    1234    #前台
+
+高仿MPR后台
     登录    https://mcrcm.mpr.net.cn:8443/mpr/mcrs-system/mvc/syslogin/login    xuzhijun    islimpr123    1234    #后台
