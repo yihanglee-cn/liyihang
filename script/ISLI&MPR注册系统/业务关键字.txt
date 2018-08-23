@@ -117,5 +117,5 @@ ISLI图书申请
     sleep    1    #等待返回列表按钮出现
     click element    xpath=/html/body/div[6]/div[3]    #点击返回列表按钮
     wait until page contains element    xpath=//*[@id="addBookButton"]    #等待列表加载完成
-    sleep     2
+    sleep    2
     close all browsers
